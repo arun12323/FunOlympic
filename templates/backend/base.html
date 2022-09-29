@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+  <head>
+     {% include 'backend/includes/header.html' %}
+  </head>
+  <body class="animsition site-navbar-small dashboard">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- topbar -->
+    {% include 'backend/includes/topbar.html' %}
+    <!-- end topbar -->
+
+   
+    <!--  navbar -->
+      {% include 'backend/includes/navbar.html' %}
+    <!-- end navbar -->
+
+    
+    <!-- content -->
+    {% block content %}
+    {% endblock content %}
+    <!-- end content -->
+
+    {% include 'backend/includes/footer.html' %}
+
+
+     <!-- javascript -->
+    {% block customJavascript %}
+    {% endblock customJavascript %}
+     <!-- end javascript -->    
+  </body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'backend/base.html' %}
+
+{% block content %}
+
+  <!-- Page -->
+  <div class="page">
+    <div class="page-header">
+      <h1 class="page-title">Game</h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        {% comment %} <li class="breadcrumb-item"><a href="javascript:void(0)">Tables</a></li> {% endcomment %}
+        <li class="breadcrumb-item active">Game</li>
+      </ol>
+      <div class="page-header-actions">
+        <a class="btn btn-success" href="{% url 'create-game' %}">Create</a>
+        {% comment %} <a class="btn btn-sm btn-default btn-outline btn-round" href="http://datatables.net"
+          target="_blank">
+            <i class="icon wb-link" aria-hidden="true"></i>
+            <span class="hidden-sm-down">Official Website</span>
+        </a> {% endcomment %}
+      </div>
+    </div>
+
+    <div class="page-content">
+    <!-- Panel Table Tools -->
+    <div class="panel">
+        <header class="panel-heading">
+        <h3 class="panel-title">Game List</h3>
+        </header>
+        <div class="panel-body">
+        <table class="table table-hover dataTable table-striped w-full" id="exampleTableTools">
+            <thead>
+            <tr>
+                <th>SN</th>
+                <th>Match</th>
+                <th>Status</th>
+                <th>Point</th>
+                <th>Starting Time</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>SN</th>
+              <th>Match</th>
+              <th>Status</th>
+              <th>Point</th>
+              <th>Starting Time</th>
+              <th>Actions</th>
+            </tr>
+            </tfoot>
+            <tbody>
+              {% for game in games %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ game }}</td>
+                  <td>{{ game.status }}</td>
+                  <td>{{ game.point1 }} - {{ game.point2 }}</td>
+                  <td>{{ game.startTime }}</td>
+                  <td>
+                    <a href="{% url 'update-game' game.id %}">
+                      <i class="icon fa-edit" aria-hidden="true"></i>
+                    </a>
+                    <a href="{% url 'delete-game' game.id %}">
+                      <i style="padding-left:10px;" class="icon fa-trash" aria-hidden="true"></i>
+                    <a>
+                  </td>
+                </tr> 
+              {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <!-- End Panel Table Tools -->
+  </div>
+
+{% endblock content %}

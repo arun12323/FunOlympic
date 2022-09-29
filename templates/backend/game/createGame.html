@@ -1,0 +1,115 @@
+{% extends 'backend/base.html' %}
+
+{% block content %}
+     <!-- Page -->
+     <div class="page">
+        <div class="page-header">
+          <h1 class="page-title">Create Game</h1>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'create-game' %}">Game</a></li>
+            <li class="breadcrumb-item active">Create</li>
+          </ol>
+        </div>
+  
+        <div class="page-content">
+          <!-- Panel Form Elements -->
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Game Form</h3>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Game Category</h4>
+                                {{ form.category }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Team 1</h4>
+                                {{ form.team1 }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Team 2</h4>
+                                {{ form.team2 }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Status</h4>
+                                {{ form.status }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Point 1</h4>
+                                {{ form.point1 }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Point 2</h4>
+                                {{ form.point2 }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Starting Time</h4>
+                                {{ form.startTime }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-8">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Live Link</h4>
+                                {{ form.liveLink }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                    <a class="btn btn-sm btn-danger" href="{% url 'get-country' %}">Cancel</a>
+                </div>
+            </form>
+          </div>
+          <!-- End Panel Form Elements -->
+        </div>
+      </div>
+      <!-- End Page -->
+{% endblock %}
+
+
+{% block customJavascript %}
+      <script>
+        $("#id_startTime").attr("type","datetime-local");
+      </script>
+{% endblock customJavascript %}

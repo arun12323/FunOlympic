@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>FunOlympic|Events</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTND3njk3tnQzimXIKmDn5fJGEnvkNG6bp6Bw&usqp=CAU');
+    background-size: cover;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 650px;
+    width: 550px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #080808;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #080808;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    width: 320px;
+  }
+
+a{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #16c910;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#event {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #event td, #event th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #event tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #event tr:hover {background-color: #ddd;}
+  
+  #event th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form >
+        <div class="container box">
+            <img src="https://i.ibb.co/zh3Ryxk/fun-olympic-logo-for-project.png">
+  <h3>Event Details. Dont miss a moment of FunOlympic</h3>
+
+  <table id="event">
+    <tr>
+      <td>Event No</td>
+      <td>Event name</td>
+      <td>Date</td>
+      <td>Time</td>
+      <td>Teams</td>
+    </tr>
+
+    {% for game in games %}
+
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ game.category.name }}</td>
+            <td>{{ game.startTime|date:"Y-m-d" }}</td>
+            <td>{{ game.startTime|date:"H:i" }}</td>
+            <td>{{ game }}</td>
+        </tr>
+
+
+    {% endfor %}
+
+    
+      {% comment %} <tr>
+        <td>1</td>
+        <td>Football</td>
+        <td>2022/9/22</td>
+        <td>1:55</td>
+        <td>Nepal vs India</td>
+      </tr>
+
+      <tr>
+        <td colspan="5" align="center">No events</td>
+      </tr> {% endcomment %}
+    
+
+  </table>
+
+  
+    <a class="btn btn-success" href="{% url 'live' %}">Back</a>
+
+</div>
+    </form>
+</body>
+</html>

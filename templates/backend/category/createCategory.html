@@ -1,0 +1,71 @@
+{% extends 'backend/base.html' %}
+
+{% block content %}
+     <!-- Page -->
+     <div class="page">
+        <div class="page-header">
+          <h1 class="page-title">Create Category</h1>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'get-category' %}">Category</a></li>
+            <li class="breadcrumb-item active">Create</li>
+          </ol>
+        </div>
+  
+        <div class="page-content">
+          <!-- Panel Form Elements -->
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Catefory Form</h3>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Country Name</h4>
+                                {{ form.name }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- Example Input Focus -->
+                            <div class="example-wrap">
+                                <h4 class="example-title">Status</h4>
+                                {{ form.status }}
+                            </div>
+                            <!-- End Example Input Focus -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                    <a class="btn btn-sm btn-danger" href="{% url 'get-country' %}">Cancel</a>
+                </div>
+            </form>
+          </div>
+          <!-- End Panel Form Elements -->
+        </div>
+      </div>
+      <!-- End Page -->
+{% endblock %}
+
+
+{% block customJavascript %}
+      <script>
+        $(document).ready(function(){
+            $('input[type="file"]').change(function(e) {
+                var file = e.target.files[0].name;
+                $('#image_name').val(file)
+            });
+        })
+
+        $(document).ready(function(){
+            $('#id_status').removeClass('form-control focus')
+        })
+      </script>
+
+{% endblock customJavascript %}

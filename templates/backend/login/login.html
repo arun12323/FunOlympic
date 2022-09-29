@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    
+    <title>Login | Olympic</title>
+    
+    <link rel="apple-touch-icon" href="{% static 'backend/assets/images/apple-touch-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'backend/assets/images/favicon.ico' %}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'backend/global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/css/bootstrap-extend.min.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/assets/css/site.min.css' %}">
+    
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/animsition/animsition.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/asscrollable/asScrollable.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/switchery/switchery.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/intro-js/introjs.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/slidepanel/slidePanel.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/jquery-mmenu/jquery-mmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/vendor/flag-icon-css/flag-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/assets/examples/css/pages/login.css' %}">
+    
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{% static 'backend/global/fonts/web-icons/web-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'backend/global/fonts/brand-icons/brand-icons.min.css' %}">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    
+    <!-- Scripts -->
+    <script src="{% static 'backend/global/vendor/breakpoints/breakpoints.js' %}"></script>
+    <script>
+      Breakpoints();
+    </script>
+    <style>
+      #messages{
+        background-color: grey;
+        color: #fff;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body class="page-login layout-full page-dark">
+       
+    <!-- Page -->
+    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">>
+      <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
+        <div class="brand">
+          <img class="brand-img" src="{% static 'backend/assets/images/logo.png' %}" alt="...">
+          <h2 class="brand-text">Olympic</h2>
+        </div>
+        <p>Sign into your pages account</p>
+        {% comment %} {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li
+              {% if message.tags %}
+                class=" {{ message.tags }} "
+              {% endif %}
+            >
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+        {% endif %} {% endcomment %}
+
+        {% for message in messages %}
+          <p id="messages">{{ message }}</p>
+        {% endfor %}
+
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label class="sr-only" for="inputEmail">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="password" name="password"
+              placeholder="Password">
+          </div>
+          <div class="form-group clearfix">
+            <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
+              <input type="checkbox" id="inputCheckbox" name="remember">
+              <label for="inputCheckbox">Remember me</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+        
+
+        <footer class="page-copyright page-copyright-inverse">
+          <p>© {% now "Y" %}. All RIGHT RESERVED.</p>
+        </footer>
+      </div>
+    </div>
+    <!-- End Page -->
+
+
+    <!-- Core  -->
+    <script src="{% static 'backend/global/vendor/babel-external-helpers/babel-external-helpers.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/popper-js/umd/popper.min.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/bootstrap/bootstrap.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/animsition/animsition.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/mousewheel/jquery.mousewheel.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/asscrollbar/jquery-asScrollbar.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/asscrollable/jquery-asScrollable.js' %}"></script>
+    
+    <!-- Plugins -->
+    <script src="{% static 'backend/global/vendor/jquery-mmenu/jquery.mmenu.min.all.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/switchery/switchery.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/intro-js/intro.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/screenfull/screenfull.js' %}"></script>
+    <script src="{% static 'backend/global/vendor/slidepanel/jquery-slidePanel.js' %}"></script>
+        <script src="{% static 'backend/global/vendor/jquery-placeholder/jquery.placeholder.js' %}"></script>
+    
+    <!-- Scripts -->
+    <script src="{% static 'backend/global/js/Component.js' %}"></script>
+    <script src="{% static 'backend/global/js/Plugin.js' %}"></script>
+    <script src="{% static 'backend/global/js/Plugin.js' %}"></script>
+    <script src="{% static 'backend/global/js/Config.js' %}"></script>
+    
+    <script src="{% static 'backend/assets/js/Section/Menubar.js' %}"></script>
+    <script src="{% static 'backend/assets/js/Section/Sidebar.js' %}"></script>
+    <script src="{% static 'backend/assets/js/Section/Sidebar.js' %}"></script>
+    <script src="{% static 'backend/assets/js/Section/GridMenu.js' %}"></script>
+    
+    <!-- Config -->
+    <script src="{% static 'backend/global/js/config/colors.js' %}"></script>
+    <script src="{% static 'backend/assets/js/config/tour.js' %}"></script>
+    <script>Config.set('assets', '{% static 'backend/assets' %}');</script>
+    
+    <!-- Page -->
+    <script src="{% static 'backend/assets/js/Site.js' %}"></script>
+    <script src="{% static 'backend/global/js/Plugin/asscrollable.js' %}"></script>
+    <script src="{% static 'backend/global/js/Plugin/slidepanel.js' %}"></script>
+    <script src="{% static 'backend/global/js/Plugin/switchery.js' %}"></script>
+        <script src="{% static 'backend/global/js/Plugin/jquery-placeholder.js' %}"></script>
+    
+    <script>
+     (function(document, window, $){
+        'use strict';
+    
+        var Site = window.Site;
+        $(document).ready(function(){
+          Site.run();
+        });
+      })(document, window, jQuery);
+    </script>
+    
+  </body>
+</html>
